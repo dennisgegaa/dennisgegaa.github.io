@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dennis Gega</title>
+<meta name="description" content="Dennis Gega studies Computer Science and Pure Mathematics at the University of Connecticut. Research, industry experience, and open source work.">
+<style>
+@font-face{font-family:LM;src:url(lmroman10-regular.otf)}@font-face{font-family:LM;src:url(lmroman10-italic.otf);font-style:italic}
+*{box-sizing:border-box}html,body{margin:0;overflow:hidden;overscroll-behavior:none}
+body{font-family:LM,'Times New Roman',serif;background:#fffcfc;color:#000;font-size:min(1.65vw,2.42dvh);line-height:1.43}
+main{position:relative;height:100dvh;overflow:clip}
+h1,h2,p,dl,dd{margin:0;font-size:inherit;font-weight:400}h1{position:absolute;top:1.4%;left:3.82%;font-size:1.65em}
+.portrait{position:absolute;left:3.82%;bottom:58.4%;width:min(18.83vw,26.48dvh);height:auto;display:block}.bio{position:absolute;left:48.4%;top:8.5%}.contacts{position:absolute;top:18.5%;left:48.4%;right:1%;display:grid;grid-template-columns:max-content 1fr;column-gap:.35em}
+dt,h2{font-style:italic}a{color:inherit;text-decoration:none}.short{display:none}
+.cv{position:absolute;top:44.3%;left:3.82%;width:43.1%}.cv section+section{margin-top:1.42em}.entry{display:grid;grid-template-columns:2.28em .73em 1fr}.entry i{white-space:nowrap}
+.art{position:absolute;left:47.9%;right:0;top:41.6%;bottom:2.4%;overflow:hidden;background:#abb0db url(grain.png) repeat;background-size:150px 40px}.art svg{display:block;width:100%;height:47.5dvh}nav{display:none}
+.match em{font-style:italic}.match{position:absolute;left:48.4%;right:2%;bottom:61.4%}
+@media(max-width:760px) and (orientation:portrait){
+body{font-size:clamp(15px,4.4vw,22px)}main{padding:4dvh 6vw;display:flex;flex-direction:column;gap:1.25dvh}
+.portrait{position:static;width:auto;height:clamp(64px,11dvh,130px);align-self:flex-start}h1,.bio,.contacts,.match,.cv,.art{position:static}h1{font-size:1.8em}.contacts{grid-template-columns:4.5em 1fr}.long{display:none}.short{display:inline}
+nav{display:flex;gap:1.05em}button{appearance:none;background:none;border:0;padding:0;color:inherit;font:italic 1em LM,serif;cursor:pointer;border-bottom:1px solid transparent}button[aria-pressed="true"]{border-color:currentColor}
+.cv{width:100%}.cv section+section{margin:0}.cv section[hidden]{display:none}.cv h2{position:absolute;clip-path:inset(50%)}.entry{grid-template-columns:2.45em .7em 1fr}.art{flex:1;min-height:0;margin-right:-6vw}.art svg{height:100%}
+}
+</style>
+<main>
+<h1>Dennis Gega</h1>
+<img class="portrait" src="portrait.webp" width="1103" height="1426" alt="Dennis Gega standing beside a vintage convertible">
+<p class="bio">Computer Science and Pure Mathematics<br>at&nbsp; <i>University of Connecticut</i></p>
+<dl class="contacts"><dt>Contact:</dt><dd><a href="mailto:dennis.gega@uconn.edu" aria-label="Email Dennis Gega"><span class="long">dennis&lt;dot&gt;gega&lt;at&gt;uconn&lt;dot&gt;edu</span><span class="short">dennis.gega@uconn.edu</span></a></dd>
+<dt>Github:</dt><dd><a href="https://github.com/dennisgegaa" aria-label="Dennis Gega on GitHub"><span class="long">https://github.com/dennisgegaa</span><span class="short">github.com/dennisgegaa</span></a></dd></dl>
+<p class="match" aria-live="polite"><a href="https://www.espn.com/soccer/team/fixtures/_/id/103/ac-milan"><em>AC Milan:</em> <span id="match-info">Match schedule</span></a></p>
+<nav aria-label="Portfolio sections"><button aria-controls="research">Research</button><button aria-controls="industry">Industry</button><button aria-controls="open-source">Open Source</button></nav>
+<div class="cv">
+<section id="research"><h2>Research:</h2>
+<p class="entry"><span>2026</span><span>-</span><span>Type System for arrays on disaggregated memory</span></p>
+<p class="entry"><span></span><span>-</span><span>Nontrivial solutions of Fermat’s quartics over quadratic number fields</span></p>
+<p class="entry"><span>2025</span><span>-</span><span>Clustering DNA sequence motif time-series data</span></p></section>
+<section id="industry"><h2>Industry:</h2>
+<p class="entry"><span>2026</span><span>-</span><span>Software Engineer Intern<br>at&nbsp; <i>Talcott Financial Group</i></span></p>
+<p class="entry"><span>2024</span><span>-</span><span>Software Engineer Intern<br>at&nbsp; <i>Non-Lethal Labs</i></span></p></section>
+<section id="open-source"><h2>Open Source:</h2><p class="entry"><span>2026</span><span>-</span><span>Music of the Primes Formalization</span></p><p class="entry"><span></span><span>-</span><span>(In progress) Asahi Linux USB-C</span></p></section>
+</div>
+<div class="art" aria-hidden="true"><svg viewBox="0 0 821 532" preserveAspectRatio="none"><g fill="none" stroke="white" stroke-width="1"><ellipse cx="-151" cy="236" rx="539" ry="141"/><ellipse cx="676" cy="306" rx="539" ry="141"/></g></svg></div>
+</main>
+<script>
+const mobile = matchMedia('(max-width:760px) and (orientation:portrait)')
+const buttons = document.querySelectorAll('nav button')
+let selected = 'research'
+function showSection() {
+  for (const button of buttons) {
+    const id = button.getAttribute('aria-controls')
+    button.setAttribute('aria-pressed', String(id === selected))
+    document.getElementById(id).hidden = mobile.matches && id !== selected
+  }
+}
+for (const button of buttons) button.onclick = () => {
+  selected = button.getAttribute('aria-controls')
+  showSection()
+}
+mobile.addEventListener('change', showSection)
+showSection()
+</script><script src="milan.js"></script></html>
